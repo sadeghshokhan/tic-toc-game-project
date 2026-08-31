@@ -1,10 +1,10 @@
 import { useState } from "react"
 
 
-export default function Player({name}){
+export default function Player({name , symbol}){
 const[isEditing , setIsEditing]=useState(false);
 
-let playerName = <span>player {name}</span>
+let playerName = <span className="player-name">{name}</span>
 
 function handleEditBtn(){
     setIsEditing(true)
@@ -16,9 +16,9 @@ playerName = <input type="text" required />
 
     return (
         <li>
-            <span>
+            <span className="player">
                 {playerName}
-                <span>symbol{}</span>
+                <span className="player-symbol">symbol{symbol}</span>
             </span>
             <button onClick={handleEditBtn}>Edit</button>
         </li>
