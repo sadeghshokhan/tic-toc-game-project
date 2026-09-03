@@ -5,9 +5,21 @@ import Player from "./Component/Player"
 
 function App() {
 const [activePlayer , setActivePlayer] = useState("X");
+const[gameTurns , setGameTurns] = useState([])
 
 function handleChangeSymbol(){
   setActivePlayer(prevState => prevState==="X" ? "O" : "X")
+  setGameTurns(prevTurn=> {
+    const currentPlayer = "X"
+
+    if(prevTurn.length > 0 && prevTurn[0].player === "X"){
+      currentPlayer = "O"
+    }
+
+    const updateTurn = [{square: {row :rowIndex , col: colIndex} , player:currentPlayer}, ...prevTurn]
+
+    return updateTurn
+  })
 }
 
   return (
