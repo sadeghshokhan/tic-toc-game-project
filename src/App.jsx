@@ -7,10 +7,10 @@ function App() {
 const [activePlayer , setActivePlayer] = useState("X");
 const[gameTurns , setGameTurns] = useState([])
 
-function handleChangeSymbol(){
+function handleChangeSymbol(rowIndex , colIndex){
   setActivePlayer(prevState => prevState==="X" ? "O" : "X")
   setGameTurns(prevTurn=> {
-    const currentPlayer = "X"
+    let currentPlayer = "X"
 
     if(prevTurn.length > 0 && prevTurn[0].player === "X"){
       currentPlayer = "O"
@@ -29,7 +29,7 @@ function handleChangeSymbol(){
           <Player initialName="Player 1" symbol="X" isActive={activePlayer==="X"}/>
           <Player initialName="Player 2" symbol="O" isActive={activePlayer==="O"}/>
         </ol>
-        <Gameboard onSelect={handleChangeSymbol} activeSymbol={activePlayer}/>
+        <Gameboard onSelect={handleChangeSymbol} activeSymbol={activePlayer} turns={gameTurns}/>
       </div>
       LOG
     </>
