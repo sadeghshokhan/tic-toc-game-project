@@ -1,6 +1,7 @@
 import { useState } from "react"
 import Gameboard from "./Component/Gameboard"
 import Player from "./Component/Player"
+import Log from "./Component/Log.jsx"
 
 
 function App() {
@@ -31,7 +32,7 @@ function handleChangeSymbol(rowIndex , colIndex){
         </ol>
         <Gameboard onSelect={handleChangeSymbol} activeSymbol={activePlayer} turns={gameTurns}/>
       </div>
-      LOG
+      <Log turns={gameTurns}/>
     </>
   )
 }
