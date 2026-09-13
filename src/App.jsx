@@ -4,18 +4,29 @@ import Player from "./Component/Player"
 import Log from "./Component/Log.jsx"
 
 
-function App() {
-const [activePlayer , setActivePlayer] = useState("X");
-const[gameTurns , setGameTurns] = useState([])
-
-function handleChangeSymbol(rowIndex , colIndex){
-  setActivePlayer(prevState => prevState==="X" ? "O" : "X")
-  setGameTurns(prevTurn=> {
+//________________compute activePlayer__________
+function deriveActivePlayer(gameTurns){
     let currentPlayer = "X"
 
-    if(prevTurn.length > 0 && prevTurn[0].player === "X"){
+    if(gameTurns.length > 0 && gameTurns[0].player === "X"){
       currentPlayer = "O"
     }
+
+return currentPlayer
+}      
+//|______________________________________________|
+
+
+function App() {
+// const [activePlayer , setActivePlayer] = useState("X");
+const[gameTurns , setGameTurns] = useState([])
+
+const activePlayer = deriveActivePlayer(gameTurns)
+
+function handleChangeSymbol(rowIndex , colIndex){
+  // setActivePlayer(prevState => prevState==="X" ? "O" : "X")
+  setGameTurns(prevTurn=> {
+    const currentPlayer = deriveActivePlayer(prevTurn)
 
     const updateTurn = [{square: {row :rowIndex , col: colIndex} , player:currentPlayer}, ...prevTurn]
 
