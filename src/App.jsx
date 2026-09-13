@@ -2,6 +2,7 @@ import { useState } from "react"
 import Gameboard from "./Component/Gameboard"
 import Player from "./Component/Player"
 import Log from "./Component/Log.jsx"
+import { WINNING_COMBINATIONS } from "./winning-combinations.js"
 
 
 //________________compute activePlayer__________

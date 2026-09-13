@@ -18,17 +18,18 @@ export default function Gameboard({ onSelect, turns }) {
 
     return (
         <ol id="game-board">
-            {initialGameboard.map((row, rowIndex) => <li key={rowIndex}>
-                <ol>
-                    {row.map((playerSymbol, colIndex) =>
-                        <li key={colIndex}>
-                            <button onClick={() => onSelect(rowIndex, colIndex)} disabled={playerSymbol !== null}>
-                                {playerSymbol}
-                            </button>
-                        </li>
-                    )}
-                </ol>
-            </li>)}
+            {initialGameboard.map((row, rowIndex) =>
+                <li key={rowIndex}>
+                    <ol>
+                        {row.map((playerSymbol, colIndex) =>
+                            <li key={colIndex}>
+                                <button onClick={() => onSelect(rowIndex, colIndex)} disabled={playerSymbol !== null}>
+                                    {playerSymbol}
+                                </button>
+                            </li>
+                        )}
+                    </ol>
+                </li>)}
         </ol>
     )
 }
