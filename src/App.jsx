@@ -3,6 +3,7 @@ import Gameboard from "./Component/Gameboard"
 import Player from "./Component/Player"
 import Log from "./Component/Log.jsx"
 import { WINNING_COMBINATIONS } from "./winning-combinations.js"
+import GameOver from "./Component/GameOver.jsx"
 
 
 //________________gameBoard__________
@@ -59,6 +60,8 @@ function App() {
       }
     }
 
+    const hasdraw = gameTurns.length === 9 && !winner;
+
 
   function handleChangeSymbol(rowIndex, colIndex) {
     // setActivePlayer(prevState => prevState==="X" ? "O" : "X")
@@ -78,7 +81,7 @@ function App() {
           <Player initialName="Player 1" symbol="X" isActive={activePlayer === "X"} />
           <Player initialName="Player 2" symbol="O" isActive={activePlayer === "O"} />
         </ol>
-        {winner && <p>you won , {winner} !</p>}
+        {(winner || hasdraw) && <GameOver winner={winner}/>}
         <Gameboard onSelect={handleChangeSymbol} activeSymbol={activePlayer} board={gameboard} />
       </div>
       <Log turns={gameTurns} />
